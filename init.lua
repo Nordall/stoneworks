@@ -2,320 +2,72 @@
 
 stoneworks = {}
 
--- Register stoneworks.
--- Node will be called stoneworks:arches_<subname>
-
-function stoneworks.register_arches(subname, recipeitem, groups, images, description, sounds)
-	groups.arches = 1
-minetest.register_node(":stoneworks:arches_low_wall" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, -0.5, 0.5, 0.125, 0.5},
-		}
-	}
-})
-
-minetest.register_node(":stoneworks:arches_high" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.0625, -0.5, 0.5, 0.5, 0.5},
-			{0.0625, -0.125, -0.5, 0.5, -0.0625, 0.5},
-			{-0.5, -0.125, -0.5, -0.0625, -0.0625, 0.5},
-			{-0.5, -0.1875, -0.5, -0.1875, -0.125, 0.5},
-			{0.1875, -0.1875, -0.5, 0.5, -0.125, 0.5},
-			{0.3125, -0.3125, -0.5, 0.5, -0.1875, 0.5},
-			{-0.5, -0.3125, -0.5, -0.3125, -0.1875, 0.5},
-			{-0.5, -0.4375, -0.5, -0.375, -0.25, 0.5},
-			{0.375, -0.4375, -0.5, 0.5, -0.25, 0.5},
-			{0.4375, -0.5, -0.5, 0.5, -0.3125, 0.5},
-			{-0.5, -0.5, -0.5, -0.4375, -0.3125, 0.5},
-		}
-	}
-})
-
-minetest.register_node(":stoneworks:arches_low" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.0625, -0.5, 0.5, 0.125, 0.5},
-			{0.0625, -0.125, -0.5, 0.5, -0.0625, 0.5},
-			{-0.5, -0.125, -0.5, -0.0625, -0.0625, 0.5},
-			{-0.5, -0.1875, -0.5, -0.1875, -0.125, 0.5},
-			{0.1875, -0.1875, -0.5, 0.5, -0.125, 0.5},
-			{0.3125, -0.3125, -0.5, 0.5, -0.1875, 0.5},
-			{-0.5, -0.3125, -0.5, -0.3125, -0.1875, 0.5},
-			{-0.5, -0.4375, -0.5, -0.375, -0.25, 0.5},
-			{0.375, -0.4375, -0.5, 0.5, -0.25, 0.5},
-			{0.4375, -0.5, -0.5, 0.5, -0.3125, 0.5},
-			{-0.5, -0.5, -0.5, -0.4375, -0.3125, 0.5},
-		}
-	}
-})
-
-minetest.register_node(":stoneworks:arches_high_quad" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.0625, -0.5, 0.5, 0.5, 0.5},
-			{0.0625, -0.125, -0.5, 0.5, -0.0625, -0.0625},
-			{-0.5, -0.125, -0.5, -0.0625, -0.0625, -0.0625},
-			{-0.5, -0.1875, -0.5, -0.1875, -0.125, -0.1875},
-			{0.1875, -0.1875, -0.5, 0.5, -0.125, -0.1875},
-			{0.3125, -0.3125, -0.5, 0.5, -0.1875, -0.3125},
-			{-0.5, -0.3125, -0.5, -0.3125, -0.1875, -0.3125},
-			{-0.5, -0.4375, -0.5, -0.375, -0.25, -0.375},
-			{0.375, -0.4375, -0.5, 0.5, -0.25, -0.375},
-			{0.4375, -0.5, -0.5, 0.5, -0.3125, -0.4375},
-			{-0.5, -0.5, -0.5, -0.4375, -0.3125, -0.4375},
-			{0.0625, -0.125, 0.0625, 0.5, -0.0625, 0.5},
-			{0.1875, -0.1875, 0.1875, 0.5, -0.125, 0.5},
-			{-0.5, -0.3125, 0.3125, -0.3125, -0.1875, 0.5},
-			{-0.5, -0.4375, 0.375, -0.375, -0.25, 0.5},
-			{0.375, -0.4375, 0.375, 0.5, -0.25, 0.5},
-			{-0.5, -0.5, 0.4375, -0.4375, -0.3125, 0.5},
-			{0.3125, -0.3125, 0.3125, 0.5, -0.1875, 0.5},
-			{0.4375, -0.5, 0.4375, 0.5, -0.3125, 0.5},
-			{-0.5, -0.1875, 0.1875, -0.1875, -0.125, 0.5},
-			{-0.5, -0.125, 0.0625, -0.0625, -0.0625, 0.5},
-		}
-	}
-})
-
-minetest.register_node(":stoneworks:arches_low_quad" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.0625, -0.5, 0.5, 0.125, 0.5},
-			{0.0625, -0.125, -0.5, 0.5, -0.0625, -0.0625},
-			{-0.5, -0.125, -0.5, -0.0625, -0.0625, -0.0625},
-			{-0.5, -0.1875, -0.5, -0.1875, -0.125, -0.1875},
-			{0.1875, -0.1875, -0.5, 0.5, -0.125, -0.1875},
-			{0.3125, -0.3125, -0.5, 0.5, -0.1875, -0.3125},
-			{-0.5, -0.3125, -0.5, -0.3125, -0.1875, -0.3125},
-			{-0.5, -0.4375, -0.5, -0.375, -0.25, -0.375},
-			{0.375, -0.4375, -0.5, 0.5, -0.25, -0.375},
-			{0.4375, -0.5, -0.5, 0.5, -0.3125, -0.4375},
-			{-0.5, -0.5, -0.5, -0.4375, -0.3125, -0.4375},
-			{0.0625, -0.125, 0.0625, 0.5, -0.0625, 0.5},
-			{0.1875, -0.1875, 0.1875, 0.5, -0.125, 0.5},
-			{-0.5, -0.3125, 0.3125, -0.3125, -0.1875, 0.5},
-			{-0.5, -0.4375, 0.375, -0.375, -0.25, 0.5},
-			{0.375, -0.4375, 0.375, 0.5, -0.25, 0.5},
-			{-0.5, -0.5, 0.4375, -0.4375, -0.3125, 0.5},
-			{0.3125, -0.3125, 0.3125, 0.5, -0.1875, 0.5},
-			{0.4375, -0.5, 0.4375, 0.5, -0.3125, 0.5},
-			{-0.5, -0.1875, 0.1875, -0.1875, -0.125, 0.5},
-			{-0.5, -0.125, 0.0625, -0.0625, -0.0625, 0.5},
-		}
-	}
-})
-
-minetest.register_node(":stoneworks:arches_high_T" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.0625, -0.5, 0.5, 0.5, 0.5},
-			{0.0625, -0.125, -0.5, 0.5, -0.0625, -0.0625},
-			{-0.5, -0.125, -0.5, -0.0625, -0.0625, -0.0625},
-			{-0.5, -0.1875, -0.5, -0.1875, -0.125, -0.1875},
-			{0.1875, -0.1875, -0.5, 0.5, -0.125, -0.1875},
-			{0.3125, -0.3125, -0.5, 0.5, -0.1875, -0.3125},
-			{-0.5, -0.3125, -0.5, -0.3125, -0.1875, -0.3125},
-			{-0.5, -0.4375, -0.5, -0.375, -0.25, -0.375},
-			{0.375, -0.4375, -0.5, 0.5, -0.25, -0.375},
-			{0.4375, -0.5, -0.5, 0.5, -0.3125, -0.4375},
-			{-0.5, -0.5, -0.5, -0.4375, -0.3125, -0.4375},
-			{0.0625, -0.125, -0.5, 0.5, -0.0625, 0.5},
-			{0.1875, -0.1875, -0.5, 0.5, -0.125, 0.5},
-			{-0.5, -0.3125, 0.3125, -0.3125, -0.1875, 0.5},
-			{-0.5, -0.4375, 0.375, -0.375, -0.25, 0.5},
-			{0.375, -0.4375, -0.5, 0.5, -0.25, 0.5},
-			{-0.5, -0.5, 0.4375, -0.4375, -0.3125, 0.5},
-			{0.3125, -0.3125, -0.5, 0.5, -0.1875, 0.5},
-			{0.4375, -0.5, -0.5, 0.5, 0, 0.5},
-			{-0.5, -0.1875, 0.1875, -0.1875, -0.125, 0.5},
-			{-0.5, -0.125, 0.0625, -0.0625, -0.0625, 0.5},
-		}
-	}
-})
-
-minetest.register_node(":stoneworks:arches_low_T" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.0625, -0.5, 0.5, 0.125, 0.5},
-			{0.0625, -0.125, -0.5, 0.5, -0.0625, -0.0625},
-			{-0.5, -0.125, -0.5, -0.0625, -0.0625, -0.0625},
-			{-0.5, -0.1875, -0.5, -0.1875, -0.125, -0.1875},
-			{0.1875, -0.1875, -0.5, 0.5, -0.125, -0.1875},
-			{0.3125, -0.3125, -0.5, 0.5, -0.1875, -0.3125},
-			{-0.5, -0.3125, -0.5, -0.3125, -0.1875, -0.3125},
-			{-0.5, -0.4375, -0.5, -0.375, -0.25, -0.375},
-			{0.375, -0.4375, -0.5, 0.5, -0.25, -0.375},
-			{0.4375, -0.5, -0.5, 0.5, -0.3125, -0.4375},
-			{-0.5, -0.5, -0.5, -0.4375, -0.3125, -0.4375},
-			{0.0625, -0.125, -0.5, 0.5, -0.0625, 0.5},
-			{0.1875, -0.1875, -0.5, 0.5, -0.125, 0.5},
-			{-0.5, -0.3125, 0.3125, -0.3125, -0.1875, 0.5},
-			{-0.5, -0.4375, 0.375, -0.375, -0.25, 0.5},
-			{0.375, -0.4375, -0.5, 0.5, -0.25, 0.5},
-			{-0.5, -0.5, 0.4375, -0.4375, -0.3125, 0.5},
-			{0.3125, -0.3125, -0.5, 0.5, -0.1875, 0.5},
-			{0.4375, -0.5, -0.5, 0.5, 0, 0.5},
-			{-0.5, -0.1875, 0.1875, -0.1875, -0.125, 0.5},
-			{-0.5, -0.125, 0.0625, -0.0625, -0.0625, 0.5},
-		}
-	}
-})
-
-minetest.register_node(":stoneworks:arches_high_corner" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.0625, -0.5, 0.5, 0.5, 0.5},
-			{0.0625, -0.125, -0.5, 0.5, -0.0625, -0.0625},
-			{-0.5, -0.125, -0.5, -0.0625, -0.0625, -0.0625},
-			{-0.5, -0.1875, -0.5, -0.1875, -0.125, -0.1875},
-			{0.1875, -0.1875, -0.5, 0.5, -0.125, -0.1875},
-			{0.3125, -0.3125, -0.5, 0.5, -0.1875, 0.5},
-			{-0.5, -0.3125, -0.5, -0.3125, -0.1875, -0.3125},
-			{-0.5, -0.4375, -0.5, -0.375, -0.25, -0.375},
-			{0.375, -0.4375, -0.5, 0.5, -0.25, -0.375},
-			{0.4375, -0.5, -0.5, 0.5, -0.3125, -0.4375},
-			{-0.5, -0.5, -0.5, -0.4375, -0.3125, -0.4375},
-			{0.0625, -0.125, -0.5, 0.5, -0.0625, 0.5},
-			{0.1875, -0.1875, -0.5, 0.5, -0.125, 0.5},
-			{-0.5, -0.3125, 0.3125, 0.5, -0.1875, 0.5},
-			{-0.5, -0.4375, 0.375, 0.5, -0.25, 0.5},
-			{0.375, -0.4375, -0.5, 0.5, -0.25, 0.5},
-			{-0.5, -0.5, 0.4375, 0.5, -0.3125, 0.5},
-			{0.375, -0.3125, -0.5, 0.5, -0.1875, 0.5},
-			{0.4375, -0.5, -0.5, 0.5, 0, 0.5},
-			{-0.5, -0.1875, 0.1875, 0.5, -0.125, 0.5},
-			{-0.5, -0.125, 0.0625, 0.5, -0.0625, 0.5},
-		}
-	}
-})
-
-minetest.register_node(":stoneworks:arches_low_corner" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.0625, -0.5, 0.5, 0.125, 0.5},
-			{0.0625, -0.125, -0.5, 0.5, -0.0625, -0.0625},
-			{-0.5, -0.125, -0.5, -0.0625, -0.0625, -0.0625},
-			{-0.5, -0.1875, -0.5, -0.1875, -0.125, -0.1875},
-			{0.1875, -0.1875, -0.5, 0.5, -0.125, -0.1875},
-			{0.3125, -0.3125, -0.5, 0.5, -0.1875, 0.5},
-			{-0.5, -0.3125, -0.5, -0.3125, -0.1875, -0.3125},
-			{-0.5, -0.4375, -0.5, -0.375, -0.25, -0.375},
-			{0.375, -0.4375, -0.5, 0.5, -0.25, -0.375},
-			{0.4375, -0.5, -0.5, 0.5, -0.3125, -0.4375},
-			{-0.5, -0.5, -0.5, -0.4375, -0.3125, -0.4375},
-			{0.0625, -0.125, -0.5, 0.5, -0.0625, 0.5},
-			{0.1875, -0.1875, -0.5, 0.5, -0.125, 0.5},
-			{-0.5, -0.3125, 0.3125, 0.5, -0.1875, 0.5},
-			{-0.5, -0.4375, 0.375, 0.5, -0.25, 0.5},
-			{0.375, -0.4375, -0.5, 0.5, -0.25, 0.5},
-			{-0.5, -0.5, 0.4375, 0.5, -0.3125, 0.5},
-			{0.375, -0.3125, -0.5, 0.5, -0.1875, 0.5},
-			{0.4375, -0.5, -0.5, 0.5, 0, 0.5},
-			{-0.5, -0.1875, 0.1875, 0.5, -0.125, 0.5},
-			{-0.5, -0.125, 0.0625, 0.5, -0.0625, 0.5},
-		}
-	}
-})
+--def subname from nodename
+stoneworks.subname = function(nodename)
+	local mn = ""
+	local nn = ""
+	mn, nn = string.match(nodename, "([%a_]-)[:]([%a_]+)")
+	return nn
 end
 
--- Register stoneworks.
+--def filename from nodename
+stoneworks.node2file = function(nodename)
+	local mn = ""
+	local nn = ""
+	mn, nn = string.match(nodename, "([%a_]-)[:]([%a_]+)")
+	return mn.."_"..nn..".png"
+end
+
+--set settings
+stoneworks.arches_enabled = minetest.settings:get_bool("arches")
+if stoneworks.arches_enabled == nil then
+	stoneworks.arches_enabled == true
+end
+stoneworks.arches_wood_enabled = minetest.settings:get_bool("arches_wood")
+if stoneworks.arches_wood_enabled == nil then
+stoneworks.arches_wood_enabled == true
+end
+stoneworks.arches_ores_enabled = minetest.settings.get_bool("arches_ores")
+if stoneworks.arches_ores_enabled == nil then
+stoneworks.arches_ores_enabled == true
+end
+stoneworks.arches_stone_enabled = minetest.settings.get_bool("arches_stone")
+if stoneworks.arches_stone_enabled == nil then
+stoneworks.arches_stone_enabled == true
+end
+stoneworks.arches_darkage_enabled = minetest.settings:get_bool("arches_darkage")
+if stoneworks.arches_darkage_enabled == nil then
+stoneworks.arches_darkage_enabled == false
+end
+stoneworks.walls_enabled = minetest.settings:get_bool("walls")
+if stoneworks.walls_enabled == nil then
+	stoneworks.walls_enabled == true
+end
+stoneworks.walls_wood_enabled = minetest.settings:get_bool("walls_wood")
+if stoneworks.walls_wood_enabled == nil then
+stoneworks.walls_wood_enabled == true
+end
+stoneworks.walls_ores_enabled = minetest.settings.get_bool("walls_ores")
+if stoneworks.walls_ores_enabled == nil then
+stoneworks.walls_ores_enabled == true
+end
+stoneworks.walls_darkage_enabled = minetest.settings:get_bool("walls_darkage")
+if stoneworks.walls_darkage_enabled == nil then
+stoneworks.walls_darkage_enabled == false
+end
+
+dofile minetest.get_modpath("stoneworks".."/hammer.lua")
+dofile minetest.get_modpath("stoneworks".."/api.lua")
+dofile minetest.get_modpath("stoneworks".."/arches.lua")
+--dofile minetest.get_modpath("stoneworks".."/walls.lua")
+
+--old but still needed for copy to new files!?:
+-- Walls:
 -- Node will be called stoneworks:thin_wall_<subname>
 
 function stoneworks.register_thin_wall(subname, recipeitem, groups, images, description, sounds)
 	groups.thin_wall = 1
-minetest.register_node("stoneworks:thin_wall_high" .. subname, {
+minetest.register_node(":stoneworks:thin_wall_high" .. subname, {
 	description = description,
 	drawtype = "nodebox",
 	tiles = images,
@@ -828,7 +580,7 @@ stoneworks.register_arches_and_thin_wall("tinblock", "default:tinblock",
 		"Tin Block Arches",
 		"Tin Block Thin Wall",
 		default.node_sound_stone_defaults())
-
+-------------------------------------------------------------
 
 minetest.register_node("stoneworks:highironfence", {
 	description = "StoneWorks high ironfence",
