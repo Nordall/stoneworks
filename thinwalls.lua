@@ -1,13 +1,27 @@
--- Walls:
--- Node will be called stoneworks:thin_wall_<subname>
+-- Register Stoneworks Thin Walls.
 
-function stoneworks.register_thin_wall(subname, groups, images, sounds,
-	recipeitem)
+if not stoneworks.walls_enabled then
+	return
+end
+
+function stoneworks.register_thin_walls(groups,	sounds,	recipeitem)
+
 	groups.thin_wall = 1
-	minetest.register_node(":stoneworks:thin_wall_high" .. subname, {
-		description = "Stoneworks Thin Wall High" .. subname,
+
+	local subname = stoneworks.name(recipeitem)
+	print(subname)
+	--local name = "stoneworks:arches_low_wall_"..subname
+	--print(name)
+	local desc = stoneworks.name2desc(recipeitem)
+	print(desc)
+	local image = {stoneworks.node2file(recipeitem)}
+	print(image)
+
+    -- wall high/low
+	minetest.register_node(":stoneworks:thin_wall_high_"..subname, {
+		description = "Stoneworks Thin Wall High "..desc,
 		drawtype = "nodebox",
-		tiles = images,
+		tiles = image,
 		paramtype = "light",
 		paramtype2 = "facedir",
 		legacy_facedir_simple = true,
@@ -23,8 +37,8 @@ function stoneworks.register_thin_wall(subname, groups, images, sounds,
 	})
 
 	minetest.register_craft({
-		type = "shape",
-		output = "stoneworks:thin_wall_high" .. subname .." 4",
+		type = "shaped",
+		output = "stoneworks:thin_wall_high_" .. subname .." 4",
 		recipe = {
 			{"", "", "stoneworks:hammer"},
 			{recipeitem, recipeitem, recipeitem},
@@ -35,11 +49,10 @@ function stoneworks.register_thin_wall(subname, groups, images, sounds,
 		},
 	})
 
-
-	minetest.register_node(":stoneworks:thin_wall_low" .. subname, {
-		description = "Stoneworks Thin Wall Low" .. subname,
+	minetest.register_node(":stoneworks:thin_wall_low_" .. subname, {
+		description = "Stoneworks Thin Wall Low " .. desc,
 		drawtype = "nodebox",
-		tiles = images,
+		tiles = image,
 		paramtype = "light",
 		paramtype2 = "facedir",
 		legacy_facedir_simple = true,
@@ -56,14 +69,15 @@ function stoneworks.register_thin_wall(subname, groups, images, sounds,
 
 	minetest.register_craft({
 		type = "shapeless",
-		output = "stoneworks:thin_wall_low" .. subname .. " 2",
-		recipe = {"stoneworks:thin_wall_high" .. subname},
+		output = "stoneworks:thin_wall_low_" .. subname .. " 1",
+		recipe = {"stoneworks:thin_wall_high_" .. subname},
 	})
 
-	minetest.register_node(":stoneworks:thin_wall_high_corner" .. subname, {
-		description = "Stoneworks Thin Wall High Corner " .. subname,
+    -- wall high/low corner
+	minetest.register_node(":stoneworks:thin_wall_high_corner_" .. subname, {
+		description = "Stoneworks Thin Wall High Corner " .. desc,
 		drawtype = "nodebox",
-		tiles = images,
+		tiles = image,
 		paramtype = "light",
 		paramtype2 = "facedir",
 		legacy_facedir_simple = true,
@@ -80,11 +94,11 @@ function stoneworks.register_thin_wall(subname, groups, images, sounds,
 	})
 
 	minetest.register_craft({
-		type = "shape",
-		output = "stoneworks:thin_wall_high_corner" .. subname .." 4",
+		type = "shaped",
+		output = "stoneworks:thin_wall_high_corner_" .. subname .." 4",
 		recipe = {
-			{"", "", "stoneworks:hammer"},
-			{recipeitem, recipeitem, recipeitem},
+			{recipeitem, "", "stoneworks:hammer"},
+			{recipeitem, recipeitem, ""},
 			{"", "", ""},
 		},
 		replacements = {
@@ -92,193 +106,332 @@ function stoneworks.register_thin_wall(subname, groups, images, sounds,
 		},
 	})
 
+    minetest.register_node(":stoneworks:thin_wall_low_corner_" .. subname, {
+	    description = "Stoneworks Thin Wall Low Corner ".. desc,
+	    drawtype = "nodebox",
+	    tiles = image,
+	    paramtype = "light",
+	    paramtype2 = "facedir",
+	    legacy_facedir_simple = true,
+	    groups = groups,
+	    is_ground_content = false,
+	    sounds = sounds,
+	    node_box = {
+		    type = "fixed",
+		    fixed = {
+			    {-0.1875, -0.5, -0.1875, 0.5, 0.125, 0.1875},
+			    {-0.1875, -0.5, -0.1875, 0.1875, 0.125, 0.5},
+		    }
+	    }
+    })
 
-minetest.register_node(":stoneworks:thin_wall_low_corner" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.1875, -0.5, -0.1875, 0.5, 0.125, 0.1875},
-			{-0.1875, -0.5, -0.1875, 0.1875, 0.125, 0.5},
-		}
-	}
-})
---TODO
-minetest.register_node(":stoneworks:thin_wall_high_T" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, -0.1875, 0.5, 0.5, 0.1875},
-			{-0.1875, -0.5, -0.5, 0.1875, 0.5, 0.1875},
-		}
-	}
-})
+	minetest.register_craft({
+		type = "shapeless",
+		output = "stoneworks:thin_wall_low_corner_" .. subname .. " 1",
+		recipe = {"stoneworks:thin_wall_high_corner_" .. subname},
+	})
 
-minetest.register_node(":stoneworks:thin_wall_high_low_T" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, -0.1875, 0.5, 0.5, 0.1875},
-			{-0.1875, -0.5, -0.5, 0.1875, 0.125, 0.1875},
-		}
-	}
-})
+    -- wall high/high-low/low T
+    minetest.register_node(":stoneworks:thin_wall_high_T_" .. subname, {
+	    description = "Stoneworks Thin Wall High T "..desc,
+	    drawtype = "nodebox",
+	    tiles = image,
+	    paramtype = "light",
+	    paramtype2 = "facedir",
+	    legacy_facedir_simple = true,
+	    groups = groups,
+	    is_ground_content = false,
+	    sounds = sounds,
+	    node_box = {
+		    type = "fixed",
+		    fixed = {
+			    {-0.5, -0.5, -0.1875, 0.5, 0.5, 0.1875},
+			    {-0.1875, -0.5, -0.5, 0.1875, 0.5, 0.1875},
+		    }
+	    }
+    })
 
-minetest.register_node(":stoneworks:thin_wall_low_T" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.1875, -0.5, -0.5, 0.1875, 0.125, 0.1875},
-			{-0.5, -0.5, -0.1875, 0.5, 0.125, 0.1875},
-		}
-	}
-})
+	minetest.register_craft({
+		type = "shaped",
+		output = "stoneworks:thin_wall_high_T_" .. subname .." 4",
+		recipe = {
+			{"", "", "stoneworks:hammer"},
+			{recipeitem, recipeitem, recipeitem},
+			{"", recipeitem, ""},
+		},
+		replacements = {
+			{"stoneworks:hammer", "stoneworks:hammer"},
+		},
+	})
 
-minetest.register_node(":stoneworks:thin_wall_high_quad" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, -0.1875, 0.5, 0.5, 0.1875},
-			{-0.1875, -0.5, -0.5, 0.1875, 0.5, 0.5},
-		}
-	}
-})
+    minetest.register_node(":stoneworks:thin_wall_high_low_T_" .. subname, {
+	    description = "Stoneworks Thin Wall High Low T "..desc,
+	    drawtype = "nodebox",
+	    tiles = image,
+	    paramtype = "light",
+	    paramtype2 = "facedir",
+	    legacy_facedir_simple = true,
+	    groups = groups,
+	    is_ground_content = false,
+	    sounds = sounds,
+	    node_box = {
+		    type = "fixed",
+		    fixed = {
+			    {-0.5, -0.5, -0.1875, 0.5, 0.5, 0.1875},
+			    {-0.1875, -0.5, -0.5, 0.1875, 0.125, 0.1875},
+		    }
+	    }
+    })
 
-minetest.register_node(":stoneworks:thin_wall_high_low_quad" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, -0.1875, 0.5, 0.125, 0.1875},
-			{-0.1875, -0.5, -0.5, 0.1875, 0.5, 0.5},
-		}
-	}
-})
+	minetest.register_craft({
+		type = "shapeless",
+		output = "stoneworks:thin_wall_high_low_T_" .. subname .. " 1",
+		recipe = {"stoneworks:thin_wall_high_T_" .. subname},
+	})
 
-minetest.register_node(":stoneworks:thin_wall_low_quad" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.1875, -0.5, -0.5, 0.1875, 0.125, 0.5},
-			{-0.5, -0.5, -0.1875, 0.5, 0.125, 0.1875},
-		}
-	}
-})
 
-minetest.register_node(":stoneworks:thin_wall_high_arch" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.0625, -0.1875, 0.5, 0.5, 0.1875},
-			{0.0625, -0.125, -0.1875, 0.5, -0.0625, 0.1875},
-			{-0.5, -0.125, -0.1875, -0.0625, -0.0625, 0.1875},
-			{-0.5, -0.1875, -0.1875, -0.1875, -0.125, 0.1875},
-			{0.1875, -0.1875, -0.1875, 0.5, -0.125, 0.1875},
-			{0.3125, -0.3125, -0.1875, 0.5, -0.1875, 0.1875},
-			{-0.5, -0.3125, -0.1875, -0.3125, -0.1875, 0.1875},
-			{-0.5, -0.4375, -0.1875, -0.375, -0.25, 0.1875},
-			{0.375, -0.4375, -0.1875, 0.5, -0.25, 0.1875},
-			{0.4375, -0.5, -0.1875, 0.5, -0.3125, 0.1875},
-			{-0.5, -0.5, -0.1875, -0.4375, -0.3125, 0.1875},
-		}
-	}
-})
+    minetest.register_node(":stoneworks:thin_wall_low_T" .. subname, {
+	    description = "Stoneworks Thin Wall Low T "..desc,
+	    drawtype = "nodebox",
+	    tiles = image,
+	    paramtype = "light",
+	    paramtype2 = "facedir",
+	    legacy_facedir_simple = true,
+	    groups = groups,
+	    is_ground_content = false,
+	    sounds = sounds,
+	    node_box = {
+		    type = "fixed",
+		    fixed = {
+			    {-0.1875, -0.5, -0.5, 0.1875, 0.125, 0.1875},
+			    {-0.5, -0.5, -0.1875, 0.5, 0.125, 0.1875},
+		    }
+	    }
+    })
 
-minetest.register_node(":stoneworks:thin_wall_low_arch" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.0625, -0.1875, 0.5, 0.125, 0.1875},
-			{0.0625, -0.125, -0.1875, 0.5, -0.0625, 0.1875},
-			{-0.5, -0.125, -0.1875, -0.0625, -0.0625, 0.1875},
-			{-0.5, -0.1875, -0.1875, -0.1875, -0.125, 0.1875},
-			{0.1875, -0.1875, -0.1875, 0.5, -0.125, 0.1875},
-			{0.3125, -0.3125, -0.1875, 0.5, -0.1875, 0.1875},
-			{-0.5, -0.3125, -0.1875, -0.3125, -0.1875, 0.1875},
-			{-0.5, -0.4375, -0.1875, -0.375, -0.25, 0.1875},
-			{0.375, -0.4375, -0.1875, 0.5, -0.25, 0.1875},
-			{0.4375, -0.5, -0.1875, 0.5, -0.3125, 0.1875},
-			{-0.5, -0.5, -0.1875, -0.4375, -0.3125, 0.1875},
-		}
-	}
-})
+	minetest.register_craft({
+		type = "shapeless",
+		output = "stoneworks:thin_wall_low_T_" .. subname .. " 1",
+		recipe = {"stoneworks:thin_wall_high_low_T_" .. subname},
+	})
+
+	minetest.register_craft({
+		type = "shapeless",
+		output = "stoneworks:thin_wall_high_T_" .. subname .. " 1",
+		recipe = {"stoneworks:thin_wall_low_T_" .. subname},
+	})
+
+    -- wall high/high-low/low quad
+    minetest.register_node(":stoneworks:thin_wall_high_quad_" .. subname, {
+	    description = "Stoneworks Thin Wall High Quad "..desc,
+	    drawtype = "nodebox",
+	    tiles = image,
+	    paramtype = "light",
+	    paramtype2 = "facedir",
+	    legacy_facedir_simple = true,
+	    groups = groups,
+	    is_ground_content = false,
+	    sounds = sounds,
+	    node_box = {
+		    type = "fixed",
+		    fixed = {
+			    {-0.5, -0.5, -0.1875, 0.5, 0.5, 0.1875},
+			    {-0.1875, -0.5, -0.5, 0.1875, 0.5, 0.5},
+		    }
+	    }
+    })
+
+	minetest.register_craft({
+		type = "shaped",
+		output = "stoneworks:thin_wall_high_quad_" .. subname .." 4",
+		recipe = {
+			{"", recipeitem, "stoneworks:hammer"},
+			{recipeitem, recipeitem, recipeitem},
+			{"", recipeitem, ""},
+		},
+		replacements = {
+			{"stoneworks:hammer", "stoneworks:hammer"},
+		},
+	})
+
+    minetest.register_node(":stoneworks:thin_wall_high_low_quad_" .. subname, {
+	    description = "Stoneworks Thin Wall High Low Quad "..desc,
+	    drawtype = "nodebox",
+	    tiles = image,
+	    paramtype = "light",
+	    paramtype2 = "facedir",
+	    legacy_facedir_simple = true,
+	    groups = groups,
+	    is_ground_content = false,
+	    sounds = sounds,
+	    node_box = {
+		    type = "fixed",
+		    fixed = {
+			    {-0.5, -0.5, -0.1875, 0.5, 0.125, 0.1875},
+			    {-0.1875, -0.5, -0.5, 0.1875, 0.5, 0.5},
+		    }
+	    }
+    })
+
+    	minetest.register_craft({
+		type = "shapeless",
+		output = "stoneworks:thin_wall_high_low_quad_" .. subname .. " 1",
+		recipe = {"stoneworks:thin_wall_high_quad_" .. subname},
+	})
+
+    minetest.register_node(":stoneworks:thin_wall_low_quad_" .. subname, {
+	    description = "Stoneworks Thin Wall Low Quad "..desc,
+	    drawtype = "nodebox",
+	    tiles = image,
+	    paramtype = "light",
+	    paramtype2 = "facedir",
+	    legacy_facedir_simple = true,
+	    groups = groups,
+	    is_ground_content = false,
+	    sounds = sounds,
+	    node_box = {
+		    type = "fixed",
+		    fixed = {
+			    {-0.1875, -0.5, -0.5, 0.1875, 0.125, 0.5},
+			    {-0.5, -0.5, -0.1875, 0.5, 0.125, 0.1875},
+		    }
+	    }
+    })
+
+    	minetest.register_craft({
+		type = "shapeless",
+		output = "stoneworks:thin_wall_low_quad_" .. subname .. " 1",
+		recipe = {"stoneworks:thin_wall_high_low_quad_" .. subname},
+	})
+
+    	minetest.register_craft({
+		type = "shapeless",
+		output = "stoneworks:thin_wall_high_quad_" .. subname .. " 1",
+		recipe = {"stoneworks:thin_wall_low_quad_" .. subname},
+	})
+
+    -- wall high/low arch
+    minetest.register_node(":stoneworks:thin_wall_high_arch_" .. subname, {
+	    description = "Stoneworks Thin Wall High Arch "..desc,
+	    drawtype = "nodebox",
+	    tiles = image,
+	    paramtype = "light",
+	    paramtype2 = "facedir",
+	    legacy_facedir_simple = true,
+	    groups = groups,
+	    is_ground_content = false,
+	    sounds = sounds,
+	    node_box = {
+		    type = "fixed",
+		    fixed = {
+			    {-0.5, -0.0625, -0.1875, 0.5, 0.5, 0.1875},
+			    {0.0625, -0.125, -0.1875, 0.5, -0.0625, 0.1875},
+			    {-0.5, -0.125, -0.1875, -0.0625, -0.0625, 0.1875},
+			    {-0.5, -0.1875, -0.1875, -0.1875, -0.125, 0.1875},
+			    {0.1875, -0.1875, -0.1875, 0.5, -0.125, 0.1875},
+			    {0.3125, -0.3125, -0.1875, 0.5, -0.1875, 0.1875},
+			    {-0.5, -0.3125, -0.1875, -0.3125, -0.1875, 0.1875},
+			    {-0.5, -0.4375, -0.1875, -0.375, -0.25, 0.1875},
+			    {0.375, -0.4375, -0.1875, 0.5, -0.25, 0.1875},
+			    {0.4375, -0.5, -0.1875, 0.5, -0.3125, 0.1875},
+			    {-0.5, -0.5, -0.1875, -0.4375, -0.3125, 0.1875},
+		    }
+	    }
+    })
+
+	minetest.register_craft({
+		type = "shaped",
+		output = "stoneworks:thin_wall_high_arch_" .. subname .." 4",
+		recipe = {
+			{"", recipeitem, "stoneworks:hammer"},
+			{recipeitem, "", recipeitem},
+			{"", "", ""},
+		},
+		replacements = {
+			{"stoneworks:hammer", "stoneworks:hammer"},
+		},
+	})
+
+    minetest.register_node(":stoneworks:thin_wall_low_arch_" .. subname, {
+	    description = "Stoneworks Thin Wall Low Arch "..desc,
+	    drawtype = "nodebox",
+	    tiles = image,
+	    paramtype = "light",
+	    paramtype2 = "facedir",
+	    legacy_facedir_simple = true,
+	    groups = groups,
+	    is_ground_content = false,
+	    sounds = sounds,
+	    node_box = {
+		    type = "fixed",
+		    fixed = {
+			    {-0.5, -0.0625, -0.1875, 0.5, 0.125, 0.1875},
+			    {0.0625, -0.125, -0.1875, 0.5, -0.0625, 0.1875},
+			    {-0.5, -0.125, -0.1875, -0.0625, -0.0625, 0.1875},
+			    {-0.5, -0.1875, -0.1875, -0.1875, -0.125, 0.1875},
+			    {0.1875, -0.1875, -0.1875, 0.5, -0.125, 0.1875},
+			    {0.3125, -0.3125, -0.1875, 0.5, -0.1875, 0.1875},
+			    {-0.5, -0.3125, -0.1875, -0.3125, -0.1875, 0.1875},
+			    {-0.5, -0.4375, -0.1875, -0.375, -0.25, 0.1875},
+			    {0.375, -0.4375, -0.1875, 0.5, -0.25, 0.1875},
+			    {0.4375, -0.5, -0.1875, 0.5, -0.3125, 0.1875},
+			    {-0.5, -0.5, -0.1875, -0.4375, -0.3125, 0.1875},
+		    }
+	    }
+    })
+
+    	minetest.register_craft({
+		type = "shapeless",
+		output = "stoneworks:thin_wall_low_arch_" .. subname .. " 1",
+		recipe = {"stoneworks:thin_wall_high_arch_" .. subname},
+	})
+
+    	minetest.register_craft({
+		type = "shapeless",
+		output = "stoneworks:thin_wall_high_arch_" .. subname .. " 1",
+		recipe = {"stoneworks:thin_wall_low_arch_" .. subname},
+	})
+
 end
+
+-- register thin walls according to settings
+-- params: groups, sound, recipeitem
+if stoneworks.walls_wood_enabled then
+	for idx, value in ipairs(stoneworks.nodes["default_wood"]) do
+		stoneworks.register_thin_walls({snappy = 2, choppy = 2,
+			oddly_breakable_by_hand = 2, flammable = 3},
+			default.node_sound_wood_defaults(), value)
+	end
+end
+if stoneworks.walls_ores_enabled then
+	for idx, value in ipairs(stoneworks.nodes["default_ores"]) do
+		stoneworks.register_thin_walls({cracky = 1},
+			default.node_sound_stone_defaults(), value)
+	end
+end
+if stoneworks.walls_stone_enabled then
+	for idx, value in ipairs(stoneworks.nodes["default_stone"]) do
+		stoneworks.register_thin_walls({cracky = 2},
+			default.node_sound_stone_defaults(), value)
+	end
+end
+if stoneworks.walls_darkage_enabled then
+    if minetest.registered_nodes["darkage:basalt"] then
+	    for idx, value in ipairs(stoneworks.nodes["darkage"]) do
+		    stoneworks.register_thin_walls({cracky = 2},
+				default.node_sound_stone_defaults(), value)
+	    end
+    end
+end
+if stoneworks.walls_bakedclay_enabled then
+    if minetest.registered_nodes["bakedclay:black"] then
+	    for idx, value in ipairs(stoneworks.nodes["bakedclay"]) do
+		    stoneworks.register_thin_walls({crumbly = 2},
+				default.node_sound_stone_defaults(), value)
+	    end
+    end
+end
+
+
+
+

@@ -7,7 +7,7 @@ arches_wood (Wooden Arches) bool true
 
 # only useful if arches enabled
 # enables ores nodes from Minetest Game default
-arches_ores (Arches out of ores) bool true
+arches_ores (Arches out of ores) bool false
 
 # only useful if arches enabled
 # enables stone nodes from Minetest Game default
@@ -15,25 +15,32 @@ arches_stone (Arches out of stone) bool true
 
 # only useful if arches enabled
 # enables nodes from darkage mod
-arches_darkage (Arches out of darkage nodes) bool true
+arches_darkage (Arches out of darkage nodes) bool false
 
-# enables stoneworks miniwalls
-walls (Stoneworks' Miniwalls) bool true
-# enables default nodes from Minetest Game
+# only useful if arches enabled
+# enables nodes from bakedclay mod
+arches_bakedclay (Arches out of bakedclay nodes) bool false
+
+# enables stoneworks' thinwalls
+walls (Stoneworks' Thinwalls) bool true
 
 # only useful if walls enabled
 # enables wooden nodes from Minetest Game default
-walls_wood (Wooden Miniwalls) bool true
+walls_wood (Wooden Thinwalls) bool true
 
 # only useful if walls enabled
 # enables ores nodes from Minetest Game default
-walls_ores (Miniwalls out of ores) bool true
+walls_ores (Thinwalls out of ores) bool false
 
 # only useful if walls enabled
 # enables stone nodes from Minetest Game default
-walls_stone (Miniwalls out of stone) bool true
+walls_stone (Thinwalls out of stone) bool true
 
 # only useful if walls enabled
 # enables nodes from darkage mod
-walls_darkage (Miniwalls out of darkage nodes) bool true
+walls_darkage (Thinwalls out of darkage nodes) bool false
+
+# only useful if walls enabled
+# enables nodes from bakedclay mod
+walls_bakedclay (Thinwalls out of bakedclay nodes) bool false
 
