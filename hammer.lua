@@ -1,7 +1,8 @@
---[[ 
+--[[
 
     Stonework's stonemason hammer serves as recipe ingredient
-    to help making recipes easily distinctable and reasonable.
+    to help making recipes easily distinctable and reasonable
+    and nicer.
 
 ]]
 

@@ -1,3 +1,5 @@
+-- Register stoneworks' fences
+
 minetest.register_node("stoneworks:highironfence", {
 	description = "StoneWorks high ironfence",
 	drawtype = "nodebox",

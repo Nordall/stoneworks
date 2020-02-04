@@ -4,18 +4,13 @@ if not stoneworks.walls_enabled then
 	return
 end
 
-function stoneworks.register_thin_walls(groups,	sounds,	recipeitem)
+stoneworks.register_thin_walls = function(image, groups, sounds,
+	recipeitem)
 
 	groups.thin_wall = 1
 
 	local subname = stoneworks.name(recipeitem)
-	print(subname)
-	--local name = "stoneworks:arches_low_wall_"..subname
-	--print(name)
 	local desc = stoneworks.name2desc(recipeitem)
-	print(desc)
-	local image = {stoneworks.node2file(recipeitem)}
-	print(image)
 
     -- wall high/low
 	minetest.register_node(":stoneworks:thin_wall_high_"..subname, {
@@ -395,41 +390,49 @@ function stoneworks.register_thin_walls(groups,	sounds,	recipeitem)
 end
 
 -- register thin walls according to settings
--- params: groups, sound, recipeitem
+-- params: image, groups, sound, recipeitem
 if stoneworks.walls_wood_enabled then
 	for idx, value in ipairs(stoneworks.nodes["default_wood"]) do
-		stoneworks.register_thin_walls({snappy = 2, choppy = 2,
+		stoneworks.register_thin_walls(value[2], {snappy = 2, choppy = 2,
 			oddly_breakable_by_hand = 2, flammable = 3},
-			default.node_sound_wood_defaults(), value)
+			default.node_sound_wood_defaults(), value[1])
 	end
 end
 if stoneworks.walls_ores_enabled then
 	for idx, value in ipairs(stoneworks.nodes["default_ores"]) do
-		stoneworks.register_thin_walls({cracky = 1},
-			default.node_sound_stone_defaults(), value)
+		stoneworks.register_thin_walls(value[2], {cracky = 1},
+			default.node_sound_stone_defaults(), value[1])
 	end
 end
 if stoneworks.walls_stone_enabled then
 	for idx, value in ipairs(stoneworks.nodes["default_stone"]) do
-		stoneworks.register_thin_walls({cracky = 2},
-			default.node_sound_stone_defaults(), value)
+		stoneworks.register_thin_walls(value[2], {cracky = 2},
+			default.node_sound_stone_defaults(), value[1])
 	end
 end
 if stoneworks.walls_darkage_enabled then
     if minetest.registered_nodes["darkage:basalt"] then
 	    for idx, value in ipairs(stoneworks.nodes["darkage"]) do
-		    stoneworks.register_thin_walls({cracky = 2},
-				default.node_sound_stone_defaults(), value)
+		    stoneworks.register_thin_walls({value[2], cracky = 2},
+				default.node_sound_stone_defaults(), value[1])
 	    end
     end
 end
 if stoneworks.walls_bakedclay_enabled then
     if minetest.registered_nodes["bakedclay:black"] then
 	    for idx, value in ipairs(stoneworks.nodes["bakedclay"]) do
-		    stoneworks.register_thin_walls({crumbly = 2},
-				default.node_sound_stone_defaults(), value)
+		    stoneworks.register_thin_walls(value[2], {crumbly = 2},
+				default.node_sound_stone_defaults(), value[1])
 	    end
     end
+end
+for idx, value in ipairs(stoneworks.nodes["custom"]) do
+	if value == nil then
+		return
+	else
+		stoneworks.register_thin_walls(value[2], {cracky = 2},
+			default.node_sound_stone_defaults(), value[1])
+	end
 end
 
 

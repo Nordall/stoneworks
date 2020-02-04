@@ -1,9 +1,5 @@
 -- [MOD] StoneWorks [stoneworks] (1.2) by TumeniNodes
 
---TODO	Rezepte durchtesten
---		Rezepte der fences korrigieren: high und high/low vertauscht
---		settings testen
-
 stoneworks = {}
 
 --def subname from subnode
@@ -16,21 +12,13 @@ stoneworks.name = function(subnode)
 end
 
 --def description from subnode
-stoneworks.name2desc = function(subnode) --default:stone
+stoneworks.name2desc = function(subnode)
 	local s = stoneworks.name(subnode)
 	print(s, type(s))
 	s = s:gsub("_", " ")
 	s = s:gsub("^%l", string.upper)
 	s = s:gsub("(%s%l.-)", string.upper)
 	return s
-end
-
---def filename from subnodename
-stoneworks.node2file = function(nodename)
-	local mn = ""
-	local nn = ""
-	mn, nn = string.match(nodename, "([%a_]-)[:]([%a_]+)")
-	return mn.."_"..nn..".png"
 end
 
 --set settings
@@ -89,15 +77,4 @@ dofile(minetest.get_modpath("stoneworks").."/api.lua")
 dofile(minetest.get_modpath("stoneworks").."/arches.lua")
 dofile(minetest.get_modpath("stoneworks").."/thinwalls.lua")
 dofile(minetest.get_modpath("stoneworks").."/fences.lua")
-
-
---[[ Register arches and thin_wall
-
-stoneworks.register_arches_and_thin_wall("wood", "default:wood",
-		{snappy = 2, choppy = 2, oddly_breakable_by_hand = 2, flammable = 3},
-		{"default_wood.png"},
-		"Wooden Arches",
-		"Wooden Thin Wall",
-		default.node_sound_wood_defaults())
-]]
 

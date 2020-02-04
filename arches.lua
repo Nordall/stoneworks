@@ -4,18 +4,12 @@ if not stoneworks.arches_enabled then
 	return
 end
 
-
-
-stoneworks.register_arches = function(groups, sounds, recipeitem)
+stoneworks.register_arches = function(image, groups, sounds, recipeitem)
 
 	groups.arches = 1
 
 	local subname = stoneworks.name(recipeitem)
-	print(subname)
-	local name = "stoneworks:arches_low_wall_"..subname
-	print(name)
 	local desc = stoneworks.name2desc(recipeitem)
-	local image = {stoneworks.node2file(recipeitem)}
 
 	-- low wall; bottom part for use of arch with window
 	minetest.register_node("stoneworks:arches_low_wall_"..subname, {
@@ -413,43 +407,62 @@ stoneworks.register_arches = function(groups, sounds, recipeitem)
 end
 
 -- register arches according to settings
--- params: groups, sound, recipeitem
+-- params: image, groups, sound, recipeitem
 if stoneworks.arches_wood_enabled then
-	for idx, value in ipairs(stoneworks.nodes["default_wood"]) do
-		stoneworks.register_arches(
+	for idx, val in ipairs(stoneworks.nodes["default_wood"]) do
+		local rec = val[1]
+		local img = val[2]
+		stoneworks.register_arches(img,
 			{snappy = 2, choppy = 2, oddly_breakable_by_hand = 2,
 			flammable = 3},
-			default.node_sound_wood_defaults(), value)
+			default.node_sound_wood_defaults(), rec)
 	end
 end
 if stoneworks.arches_ores_enabled then
-	for idx, value in ipairs(stoneworks.nodes["default_ores"]) do
-		print(value[1], value[2])
-		stoneworks.register_arches({cracky = 1},
-		default.node_sound_stone_defaults(), value)
+	for idx, val in ipairs(stoneworks.nodes["default_ores"]) do
+		local rec = val[1]
+		local img = val[2]
+		stoneworks.register_arches(img, {cracky = 1},
+			default.node_sound_stone_defaults(), rec)
 	end
 end
 if stoneworks.arches_stone_enabled then
-	for idx, value in ipairs(stoneworks.nodes["default_stone"]) do
-		stoneworks.register_arches({cracky = 2},
-		default.node_sound_stone_defaults(), value)
+	for idx, val in ipairs(stoneworks.nodes["default_stone"]) do
+		local rec = val[1]
+		local img = val[2]
+		stoneworks.register_arches(img, {cracky = 2},
+			default.node_sound_stone_defaults(), rec)
 	end
 end
 if stoneworks.arches_darkage_enabled then
+	-- is darkage installed?
     if minetest.registered_nodes["darkage:basalt"] then
-	    for idx, value in ipairs(stoneworks.nodes["darkage"]) do
-		    stoneworks.register_arches({cracky = 2},
-			default.node_sound_stone_defaults(), value)
+	    for idx, val in ipairs(stoneworks.nodes["darkage"]) do
+			local rec = val[1]
+			local img = val[2]
+		    stoneworks.register_arches(img, {cracky = 2},
+				default.node_sound_stone_defaults(), rec)
 	    end
     end
 end
 if stoneworks.arches_bakedclay_enabled then
+	--is bakedclay installed
     if minetest.registered_nodes["bakedclay:black"] then
-	    for idx, value in ipairs(stoneworks.nodes["bakedclay"]) do
-		    stoneworks.register_arches({crumbly = 2},
-			default.node_sound_stone_defaults(), value)
+	    for idx, val in ipairs(stoneworks.nodes["bakedclay"]) do
+			local rec = val[1]
+			local img = val[2]
+		    stoneworks.register_arches(img, {crumbly = 2},
+				default.node_sound_stone_defaults(), rec)
 	    end
     end
 end
-
+for idx, val in ipairs(stoneworks.nodes["custom"]) do
+	-- is custom nodes empty?
+	if val == nil then
+		return
+	else
+		stoneworks.register_arches(val[2], {cracky = 2},
+			default.node_sound_stone_defaults(), val[1])
+	end
+end
 

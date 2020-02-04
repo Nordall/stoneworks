@@ -1,7 +1,12 @@
 stoneworks.nodes = {}
 
-stoneworks.nodes["default_wood"] = {"default:wood", "default:junglewood",
-"default:pine_wood", "default:acacia_wood", "default:aspen_wood"}
+stoneworks.nodes["default_wood"] = {
+{"default:wood", "default_wood.png"},
+{"default:junglewood", "default_junglewood.png"},
+{"default:pine_wood", "default_pine_wood.png"},
+{"default:acacia_wood", "default_acacia_wood.png"},
+{"default:aspen_wood", "default_aspen_wood.png"}
+}
 
 stoneworks.nodes["default_ores"] = {
 {"default:bronzeblock", "default_bronze_block.png"},
@@ -13,28 +18,64 @@ stoneworks.nodes["default_ores"] = {
 {"default:diamondblock", "default_diamond_block.png"}
 }
 
-stoneworks.nodes["default_stone"] = {"default:stone", "default:cobble",
-"default:desert_stone", "default:desert_cobble", "default:sandstone",
-"default:desert_sandstone", "default:silver_sandstone"}
+stoneworks.nodes["default_stone"] = {
+{"default:stone", "default_stone.png"},
+{"default:cobble", "default_cobble.png"},
+{"default:desert_stone", "default_desert_stone.png"},
+{"default:desert_cobble", "default_desert_cobble.png"},
+{"default:sandstone", "default_sandstone.png"},
+{"default:desert_sandstone", "default_desert_sandstone.png"},
+{"default:silver_sandstone", "default_silver_sandstone.png"}
+}
 
-stoneworks.nodes["darkage"] = {"darkage:adobe", "darkage:basalt",
-"darkage:basalt_rubble", "darkage:gneiss", "darkage:gneiss_rubble",
-"darkage:marble", "darkage:ors", "darkage:ors_rubble",
-"darkage:serpentine", "darkage:shale", "darkage:schist", "darkage:slate",
-"darkage:slate_rubble", "darkage:tuff", "darkage:tuff_rubble",
-"darkage:rhyolitic_tuff", "darkage:rhyolitic_tuff_rubble"}
+stoneworks.nodes["darkage"] = {
+{"darkage:adobe", "darkage_adobe.png"},
+{"darkage:basalt", "darkage_basalt.png"},
+{"darkage:basalt_rubble", "darkage_basalt_rubble.png"},
+{"darkage:gneiss", "darkage_gneiss.png"},
+{"darkage:gneiss_rubble", "darkage_gneiss_rubble.png"},
+{"darkage:marble", "darkage_marble.png"},
+{"darkage:ors", "darkage_ors.png"},
+{"darkage:ors_rubble", "darkage_ors_rubble.png"},
+{"darkage:serpentine", "darkage_serpentine.png"},
+{"darkage:shale", "darkage_shale.png"},
+{"darkage:schist", "darkage_shist.png"},
+{"darkage:slate", "darkage_slate.png"},
+{"darkage:slate_rubble", "darkage_slate_rubble.png"},
+{"darkage:tuff", "darkage_tuff.png"},
+{"darkage:tuff_rubble", "darkage_tuff_rubble.png"},
+{"darkage:rhyolitic_tuff", "darkage_rhyolitic_tuff.png"},
+{"darkage:rhyolitic_tuff_rubble", "darkage_rhyolitic_tuff_rubble.png"}
+}
 
-stoneworks.nodes["bakedclay"] = {"bakedclay:black", "bakedclay:blue",
-"bakedclay:brown", "bakedclay:cyan", "bakedclay:dark_green",
-"bakedclay:dark_grey", "bakedclay:green", "bakedclay:grey", "bakedclay:magenta",
-"bakedclay:natural", "bakedclay:orange", "bakedclay:pink", "bakedclay:red",
-"bakedclay:violet", "bakedclay:white", "bakedclay:yellow"}
+stoneworks.nodes["bakedclay"] = {
+{"bakedclay:black", "baked_clay_black.png"},
+{"bakedclay:blue", "baked_clay_blue.png"},
+{"bakedclay:brown", "baked_clay_brown.png"},
+{"bakedclay:cyan", "baked_clay_cyan.png"},
+{"bakedclay:dark_green", "baked_clay_dark_green.png"},
+{"bakedclay:dark_grey", "baked_clay_dark_grey.png"},
+{"bakedclay:green", "baked_clay_green.png"},
+{"bakedclay:grey", "baked_clay_grey.png"},
+{"bakedclay:magenta", "baked_clay_magenta.png"},
+{"bakedclay:natural", "baked_clay_natural.png"},
+{"bakedclay:orange", "baked_clay_orange.png"},
+{"bakedclay:pink", "baked_clay_pink.png"},
+{"bakedclay:red", "baked_clay_red.png"},
+{"bakedclay:violet", "baked_clay_violet.png"},
+{"bakedclay:white", "baked_clay_white.png"},
+{"bakedclay:yellow", "baked_clay_yellow.png"},
+}
 
 
 --[[
-	Here you can add nodes of your like.
-	Note that the rules of giving names to image files must be
-	strictly observed.
+	stoneworks.nodes["custom"].
+	Here you can add nodes of your likeing following the above schemes.
+	First nodename, second filename.
 ]]
 
-stoneworks.nodes["custom"] = {}
+
+stoneworks.nodes["custom"] = {
+{},
+}
+
