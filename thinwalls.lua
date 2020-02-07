@@ -413,7 +413,7 @@ end
 if stoneworks.walls_darkage_enabled then
     if minetest.registered_nodes["darkage:basalt"] then
 	    for idx, value in ipairs(stoneworks.nodes["darkage"]) do
-		    stoneworks.register_thin_walls({value[2], cracky = 2},
+		    stoneworks.register_thin_walls(value[2], {cracky = 2},
 				default.node_sound_stone_defaults(), value[1])
 	    end
     end
