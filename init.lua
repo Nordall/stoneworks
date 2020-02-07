@@ -7,14 +7,12 @@ stoneworks.name = function(subnode)
 	local mn = ""
 	local nn = ""
 	mn, nn = string.match(subnode, "([%a_]-)[:]([%a_]+)")
-	print(nn, type(nn))
 	return nn
 end
 
 --def description from subnode
 stoneworks.name2desc = function(subnode)
 	local s = stoneworks.name(subnode)
-	print(s, type(s))
 	s = s:gsub("_", " ")
 	s = s:gsub("^%l", string.upper)
 	s = s:gsub("(%s%l.-)", string.upper)

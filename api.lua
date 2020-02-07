@@ -39,7 +39,7 @@ stoneworks.nodes["darkage"] = {
 {"darkage:ors_rubble", "darkage_ors_rubble.png"},
 {"darkage:serpentine", "darkage_serpentine.png"},
 {"darkage:shale", "darkage_shale.png"},
-{"darkage:schist", "darkage_shist.png"},
+{"darkage:schist", "darkage_schist.png"},
 {"darkage:slate", "darkage_slate.png"},
 {"darkage:slate_rubble", "darkage_slate_rubble.png"},
 {"darkage:tuff", "darkage_tuff.png"},

@@ -15,7 +15,7 @@ stoneworks.register_arches = function(image, groups, sounds, recipeitem)
 	minetest.register_node("stoneworks:arches_low_wall_"..subname, {
 		description = "Stoneworks Arches Low Wall "..desc,
 		drawtype = "nodebox",
-		tiles = image,
+		tiles = {image},
 		paramtype = "light",
 		paramtype2 = "facedir",
 		legacy_facedir_simple = true,
@@ -46,7 +46,7 @@ stoneworks.register_arches = function(image, groups, sounds, recipeitem)
 	minetest.register_node(":stoneworks:arches_high_" .. subname, {
 		description = "Stoneworks Arches High "..desc,
 		drawtype = "nodebox",
-		tiles = image,
+		tiles = {image},
 		paramtype = "light",
 		paramtype2 = "facedir",
 		legacy_facedir_simple = true,
@@ -87,7 +87,7 @@ stoneworks.register_arches = function(image, groups, sounds, recipeitem)
 	minetest.register_node(":stoneworks:arches_low_" .. subname, {
 		description = "Stoneworks Arches Low "..desc,
 		drawtype = "nodebox",
-		tiles = image,
+		tiles = {image},
 		paramtype = "light",
 		paramtype2 = "facedir",
 		legacy_facedir_simple = true,
@@ -121,7 +121,7 @@ stoneworks.register_arches = function(image, groups, sounds, recipeitem)
 	minetest.register_node(":stoneworks:arches_high_quad_" .. subname, {
 		description = "Stoneworks Arch High Quad " .. desc,
 		drawtype = "nodebox",
-		tiles = image,
+		tiles = {image},
 		paramtype = "light",
 		paramtype2 = "facedir",
 		legacy_facedir_simple = true,
@@ -171,7 +171,7 @@ stoneworks.register_arches = function(image, groups, sounds, recipeitem)
 	minetest.register_node("stoneworks:arches_low_quad_" .. subname, {
 		description = "Stoneworks Arches Low Quad "..desc,
 		drawtype = "nodebox",
-		tiles = image,
+		tiles = {image},
 		paramtype = "light",
 		paramtype2 = "facedir",
 		legacy_facedir_simple = true,
@@ -216,7 +216,7 @@ stoneworks.register_arches = function(image, groups, sounds, recipeitem)
 	minetest.register_node("stoneworks:arches_high_T_" .. subname, {
 		description = "Stoneworks Arches High T "..desc,
 		drawtype = "nodebox",
-		tiles = image,
+		tiles = {image},
 		paramtype = "light",
 		paramtype2 = "facedir",
 		legacy_facedir_simple = true,
@@ -267,7 +267,7 @@ stoneworks.register_arches = function(image, groups, sounds, recipeitem)
 	minetest.register_node(":stoneworks:arches_low_T_" .. subname, {
 		description = "Stoneworks Arches Low T "..desc,
 		drawtype = "nodebox",
-		tiles = image,
+		tiles = {image},
 		paramtype = "light",
 		paramtype2 = "facedir",
 		legacy_facedir_simple = true,
@@ -312,7 +312,7 @@ stoneworks.register_arches = function(image, groups, sounds, recipeitem)
 	minetest.register_node("stoneworks:arches_high_corner_" .. subname, {
 		description = "Stoneworks Arches High Corner "..desc,
 		drawtype = "nodebox",
-		tiles = image,
+		tiles = {image},
 		paramtype = "light",
 		paramtype2 = "facedir",
 		legacy_facedir_simple = true,
@@ -363,7 +363,7 @@ stoneworks.register_arches = function(image, groups, sounds, recipeitem)
 	minetest.register_node("stoneworks:arches_low_corner_" .. subname, {
 		description = "Stoneworks Arches Low Corner "..desc,
 		drawtype = "nodebox",
-		tiles = image,
+		tiles = {image},
 		paramtype = "light",
 		paramtype2 = "facedir",
 		legacy_facedir_simple = true,
@@ -458,7 +458,7 @@ if stoneworks.arches_bakedclay_enabled then
 end
 for idx, val in ipairs(stoneworks.nodes["custom"]) do
 	-- is custom nodes empty?
-	if val == nil then
+	if val[1] == nil or val[2] == nil then
 		return
 	else
 		stoneworks.register_arches(val[2], {cracky = 2},
