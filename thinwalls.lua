@@ -268,10 +268,17 @@ stoneworks.register_thin_walls = function(image, groups, sounds,
 	    }
     })
 
-    	minetest.register_craft({
-		type = "shapeless",
-		output = "stoneworks:thin_wall_high_low_quad_" .. subname .. " 1",
-		recipe = {"stoneworks:thin_wall_high_quad_" .. subname},
+    	minetest.register_craft({ --TODO Rezept finden, node angucken
+		type = "shaped",
+		output = "stoneworks:thin_wall_high_low_quad_" .. subname .. " 4",
+		recipe = {
+			{"", recipeitem, "stoneworks:hammer"},
+			{recipeitem, recipeitem, recipeitem},
+			{"", recipeitem, ""},
+		},
+		replacements = {
+			{"stoneworks:hammer", "stoneworks:hammer"},
+		},
 	})
 
     minetest.register_node(":stoneworks:thin_wall_low_quad_" .. subname, {
@@ -295,14 +302,15 @@ stoneworks.register_thin_walls = function(image, groups, sounds,
 
     	minetest.register_craft({
 		type = "shapeless",
-		output = "stoneworks:thin_wall_low_quad_" .. subname .. " 1",
-		recipe = {"stoneworks:thin_wall_high_low_quad_" .. subname},
+		output = "stoneworks:thin_wall_low_quad_" .. subname .. " 2",
+		recipe = {"stoneworks:thin_wall_high_quad_" .. subname},
 	})
 
     	minetest.register_craft({
 		type = "shapeless",
 		output = "stoneworks:thin_wall_high_quad_" .. subname .. " 1",
-		recipe = {"stoneworks:thin_wall_low_quad_" .. subname},
+		recipe = {"stoneworks:thin_wall_low_quad_" .. subname,
+				"stoneworks:thin_wall_low_quad_" .. subname},
 	})
 
     -- wall high/low arch
@@ -377,14 +385,15 @@ stoneworks.register_thin_walls = function(image, groups, sounds,
 
     	minetest.register_craft({
 		type = "shapeless",
-		output = "stoneworks:thin_wall_low_arch_" .. subname .. " 1",
+		output = "stoneworks:thin_wall_low_arch_" .. subname .. " 2",
 		recipe = {"stoneworks:thin_wall_high_arch_" .. subname},
 	})
 
     	minetest.register_craft({
 		type = "shapeless",
 		output = "stoneworks:thin_wall_high_arch_" .. subname .. " 1",
-		recipe = {"stoneworks:thin_wall_low_arch_" .. subname},
+		recipe = {"stoneworks:thin_wall_low_arch_" .. subname,
+				"stoneworks:thin_wall_low_arch_" .. subname},
 	})
 
 end

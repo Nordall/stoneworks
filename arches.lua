@@ -29,6 +29,7 @@ stoneworks.register_arches = function(image, groups, sounds, recipeitem)
 			}
 		}
 	})
+
 	minetest.register_craft({
 		type = "shaped",
 		output = "stoneworks:arches_low_wall_" .. subname .. " 4",
@@ -111,11 +112,20 @@ stoneworks.register_arches = function(image, groups, sounds, recipeitem)
 			}
 		}
 	})
+
 	minetest.register_craft({
 		type = "shapeless",
-		output = "stoneworks:arches_low_" .. subname .. " 1",
+		output = "stoneworks:arches_low_" .. subname .. " 2",
 		recipe = {"stoneworks:arches_high_" .. subname},
 	})
+
+	minetest.register_craft({
+		type = "shapeless",
+		output = "stoneworks:arches_high_" .. subname .. " 1",
+		recipe = {"stoneworks:arches_low_" .. subname,
+				"stoneworks:arches_low_" .. subname},
+	})
+
 
 	-- arch high/low quad
 	minetest.register_node(":stoneworks:arches_high_quad_" .. subname, {
@@ -155,6 +165,7 @@ stoneworks.register_arches = function(image, groups, sounds, recipeitem)
 			}
 		}
 	})
+
 	minetest.register_craft({
 		type = "shaped",
 		output = "stoneworks:arches_high_quad_" .. subname .. " 4",
@@ -208,8 +219,15 @@ stoneworks.register_arches = function(image, groups, sounds, recipeitem)
 
 	minetest.register_craft({
 		type = "shapeless",
-		output = "stoneworks:arches_low_quad_" .. subname .." 1",
+		output = "stoneworks:arches_low_quad_" .. subname .." 2",
 		recipe = {"stoneworks:arches_high_quad_" .. subname},
+	})
+
+	minetest.register_craft({
+		type = "shapeless",
+		output = "stoneworks:arches_high_quad_" .. subname .. " 1",
+		recipe = {"stoneworks:arches_low_quad_" .. subname,
+				"stoneworks:arches_low_quad_" .. subname},
 	})
 
 	-- arch high/low T
@@ -304,9 +322,17 @@ stoneworks.register_arches = function(image, groups, sounds, recipeitem)
 
 	minetest.register_craft({
 		type = "shapeless",
-		output = "stoneworks:arches_low_T_" .. subname .." 1",
+		output = "stoneworks:arches_low_T_" .. subname .." 2",
 		recipe = {"stoneworks:arches_high_T_" .. subname},
 	})
+
+	minetest.register_craft({
+	type = "shapeless",
+	output = "stoneworks:arches_high_T_" .. subname .. " 1",
+	recipe = {"stoneworks:arches_low_T_" .. subname,
+			"stoneworks:arches_low_T_" .. subname},
+	})
+
 
 	-- arch high/low corner
 	minetest.register_node("stoneworks:arches_high_corner_" .. subname, {
@@ -400,11 +426,20 @@ stoneworks.register_arches = function(image, groups, sounds, recipeitem)
 
 	minetest.register_craft({
 		type = "shapeless",
-		output = "stoneworks:arches_low_corner_" .. subname .. " 1",
+		output = "stoneworks:arches_low_corner_" .. subname .. " 2",
 		recipe = {"stoneworks:arches_high_corner_" .. subname},
 	})
 
+	minetest.register_craft({
+	type = "shapeless",
+	output = "stoneworks:arches_high_corner_" .. subname .. " 1",
+	recipe = {"stoneworks:arches_low_corner_" .. subname,
+			"stoneworks:arches_low_corner" .. subname},
+	})
+
+
 end
+
 
 -- register arches according to settings
 -- params: image, groups, sound, recipeitem
