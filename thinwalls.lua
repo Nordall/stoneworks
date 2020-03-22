@@ -64,7 +64,7 @@ stoneworks.register_thin_walls = function(image, groups, sounds,
 
 	minetest.register_craft({
 		type = "shapeless",
-		output = "stoneworks:thin_wall_low_" .. subname .. " 1",
+		output = "stoneworks:thin_wall_low_" .. subname .. " 2",
 		recipe = {"stoneworks:thin_wall_high_" .. subname},
 	})
 
@@ -93,8 +93,8 @@ stoneworks.register_thin_walls = function(image, groups, sounds,
 		output = "stoneworks:thin_wall_high_corner_" .. subname .." 4",
 		recipe = {
 			{recipeitem, "", "stoneworks:hammer"},
-			{recipeitem, recipeitem, ""},
-			{"", "", ""},
+			{recipeitem, "", ""},
+			{recipeitem, recipeitem, recipeitem},
 		},
 		replacements = {
 			{"stoneworks:hammer", "stoneworks:hammer"},
@@ -122,7 +122,7 @@ stoneworks.register_thin_walls = function(image, groups, sounds,
 
 	minetest.register_craft({
 		type = "shapeless",
-		output = "stoneworks:thin_wall_low_corner_" .. subname .. " 1",
+		output = "stoneworks:thin_wall_low_corner_" .. subname .. " 2",
 		recipe = {"stoneworks:thin_wall_high_corner_" .. subname},
 	})
 
@@ -179,13 +179,26 @@ stoneworks.register_thin_walls = function(image, groups, sounds,
     })
 
 	minetest.register_craft({
+		type = "shaped",
+		output = "stoneworks:thin_wall_high_low_T_" .. subname .." 4",
+		recipe = {
+			{"stoneworks:hammer", "", ""},
+			{recipeitem, recipeitem, recipeitem},
+			{"", recipeitem, ""},
+		},
+		replacements = {
+			{"stoneworks:hammer", "stoneworks:hammer"},
+		},
+	})
+
+	minetest.register_craft({
 		type = "shapeless",
 		output = "stoneworks:thin_wall_high_low_T_" .. subname .. " 1",
 		recipe = {"stoneworks:thin_wall_high_T_" .. subname},
 	})
 
 
-    minetest.register_node(":stoneworks:thin_wall_low_T" .. subname, {
+    minetest.register_node(":stoneworks:thin_wall_low_T_" .. subname, {
 	    description = "Stoneworks Thin Wall Low T "..desc,
 	    drawtype = "nodebox",
 	    tiles = {image},
@@ -206,15 +219,17 @@ stoneworks.register_thin_walls = function(image, groups, sounds,
 
 	minetest.register_craft({
 		type = "shapeless",
-		output = "stoneworks:thin_wall_low_T_" .. subname .. " 1",
-		recipe = {"stoneworks:thin_wall_high_low_T_" .. subname},
+		output = "stoneworks:thin_wall_low_T_" .. subname .. " 2",
+		recipe = {"stoneworks:thin_wall_high_T_" .. subname},
 	})
 
 	minetest.register_craft({
 		type = "shapeless",
 		output = "stoneworks:thin_wall_high_T_" .. subname .. " 1",
-		recipe = {"stoneworks:thin_wall_low_T_" .. subname},
+		recipe = {"stoneworks:thin_wall_low_T_" .. subname,
+				"stoneworks:thin_wall_low_T_" .. subname},
 	})
+
 
     -- wall high/high-low/low quad
     minetest.register_node(":stoneworks:thin_wall_high_quad_" .. subname, {
@@ -268,17 +283,23 @@ stoneworks.register_thin_walls = function(image, groups, sounds,
 	    }
     })
 
-    	minetest.register_craft({ --TODO Rezept finden, node angucken
+    	minetest.register_craft({
 		type = "shaped",
 		output = "stoneworks:thin_wall_high_low_quad_" .. subname .. " 4",
 		recipe = {
-			{"", recipeitem, "stoneworks:hammer"},
+			{"stoneworks:hammer", recipeitem, ""},
 			{recipeitem, recipeitem, recipeitem},
 			{"", recipeitem, ""},
 		},
 		replacements = {
 			{"stoneworks:hammer", "stoneworks:hammer"},
 		},
+	})
+
+    	minetest.register_craft({
+		type = "shapeless",
+		output = "stoneworks:thin_wall_high_quad_" .. subname .. " 1",
+		recipe = {"stoneworks:thin_wall_high_low_quad_" .. subname},
 	})
 
     minetest.register_node(":stoneworks:thin_wall_low_quad_" .. subname, {
