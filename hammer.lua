@@ -15,8 +15,8 @@ minetest.register_craft({
     type = "shaped",
     output = "stoneworks:hammer",
     recipe = {
-        {"default:steel_ingot", "", ""},
-        {"default:steel_ingot", "", ""},
-        {"default:stick", "", ""},
+        {"default:steel_ingot", "default:stick", "default:steel_ingot"},
+        {"", "", ""},
+        {"", "", ""},
     }
 })
