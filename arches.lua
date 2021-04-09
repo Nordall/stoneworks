@@ -32,7 +32,7 @@ stoneworks.register_arches = function(image, groups, sounds, recipeitem)
 
 	minetest.register_craft({
 		type = "shaped",
-		output = "stoneworks:arches_low_wall_" .. subname .. " 4",
+		output = "stoneworks:arches_low_wall_" .. subname .. " 3",
 		recipe = {
 			{"", "", ""},
 			{"", "stoneworks:hammer", ""},
@@ -74,7 +74,7 @@ stoneworks.register_arches = function(image, groups, sounds, recipeitem)
 
 	minetest.register_craft({
 		type = "shaped",
-		output = "stoneworks:arches_high_" .. subname .. " 4",
+		output = "stoneworks:arches_high_" .. subname .. " 6",
 		recipe = {
 			{recipeitem, "", recipeitem},
 			{recipeitem, "stoneworks:hammer", recipeitem},
@@ -168,7 +168,7 @@ stoneworks.register_arches = function(image, groups, sounds, recipeitem)
 
 	minetest.register_craft({
 		type = "shaped",
-		output = "stoneworks:arches_high_quad_" .. subname .. " 4",
+		output = "stoneworks:arches_high_quad_" .. subname .. " 6",
 		recipe = {
 			{recipeitem, "", recipeitem},
 			{"", "stoneworks:hammer", ""},
@@ -271,7 +271,7 @@ stoneworks.register_arches = function(image, groups, sounds, recipeitem)
 
 	minetest.register_craft({
 		type = "shaped",
-		output = "stoneworks:arches_high_T_" .. subname .. " 4",
+		output = "stoneworks:arches_high_T_" .. subname .. " 6",
 		recipe = {
 			{recipeitem, recipeitem, recipeitem},
 			{"", "stoneworks:hammer", ""},
@@ -375,7 +375,7 @@ stoneworks.register_arches = function(image, groups, sounds, recipeitem)
 
 	minetest.register_craft({
 		type = "shaped",
-		output = "stoneworks:arches_high_corner_" .. subname .. " 4",
+		output = "stoneworks:arches_high_corner_" .. subname .. " 6",
 		recipe = {
 			{recipeitem, recipeitem, recipeitem},
 			{"", "stoneworks:hammer", recipeitem},
