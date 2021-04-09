@@ -20,6 +20,7 @@ stoneworks.nodes["default_ores"] = {
 
 stoneworks.nodes["default_stone"] = {
 {"default:stone", "default_stone.png"},
+{"default:stonebrick", "default_stone_brick.png"},
 {"default:cobble", "default_cobble.png"},
 {"default:desert_stone", "default_desert_stone.png"},
 {"default:desert_cobble", "default_desert_cobble.png"},
@@ -76,6 +77,9 @@ stoneworks.nodes["bakedclay"] = {
 
 
 stoneworks.nodes["custom"] = {
-{},
+{"default:stonebrick", "default_stone_brick.png"},
+{"darkage:tuff_bricks", "darkage_tuff_bricks.png"},
+{"darkage:stone_brick", "darkage_stone_brick.png"},
+{"darkage:chalked_bricks", "darkage_chalked_bricks.png"},
 }
 
