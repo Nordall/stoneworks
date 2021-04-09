@@ -23,7 +23,7 @@ minetest.register_node("stoneworks:highironfence", {
 
 minetest.register_craft({
     type = "shaped",
-    output = "stoneworks:highironfence 6",
+    output = "stoneworks:highironfence 9",
     recipe = {
         {"default:iron_lump","default:steel_ingot", "default:iron_lump"},
         {"default:iron_lump","default:steel_ingot", "default:iron_lump"},
@@ -33,8 +33,9 @@ minetest.register_craft({
 
 minetest.register_craft({
 	type = "shapeless",
-	output = "stoneworks:highironfence 1",
+	output = "stoneworks:highironfence 3",
 	recipe = {"stoneworks:highlowironfence",
+			"stoneworks:highlowironfence",
 			"stoneworks:highlowironfence"},
 })
 
@@ -80,14 +81,15 @@ minetest.register_craft({
 
 minetest.register_craft({
 	type = "shapeless",
-	output = "stoneworks:highlowironfence 1",
+	output = "stoneworks:highlowironfence 3",
 	recipe = {"stoneworks:lowironfence",
+			"stoneworks:lowironfence",
 			"stoneworks:lowironfence"},
 })
 
 minetest.register_craft({
 	type = "shapeless",
-	output = "stoneworks:highlowironfence 2",
+	output = "stoneworks:highlowironfence 3",
 	recipe = {"stoneworks:highironfence"},
 })
 
@@ -114,7 +116,7 @@ minetest.register_node("stoneworks:lowironfence", {
 
 minetest.register_craft({
     type = "shaped",
-    output = "stoneworks:lowironfence 6",
+    output = "stoneworks:lowironfence 3",
     recipe = {
         {"","", ""},
         {"","", ""},
@@ -124,12 +126,12 @@ minetest.register_craft({
 
 minetest.register_craft({
 	type = "shapeless",
-	output = "stoneworks:lowironfence 3",
+	output = "stoneworks:lowironfence 6",
 	recipe = {"stoneworks:highironfence"},
 })
 
 minetest.register_craft({
 	type = "shapeless",
-	output = "stoneworks:lowironfence 2",
+	output = "stoneworks:lowironfence 3",
 	recipe = {"stoneworks:highlowironfence"},
 })
